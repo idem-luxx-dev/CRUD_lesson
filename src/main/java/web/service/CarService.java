@@ -27,7 +27,7 @@ public class CarService {
     }
 
     public List<Car> getCarCounted(int i){
-        if (i == 0) { return cars;}
+        if (i > 5 || i < 1) { return cars;}
         return cars.stream().limit(i).collect(Collectors.toList());
     }
 }
