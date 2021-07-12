@@ -41,7 +41,7 @@ public class HibernateConfig {
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws PropertyVetoException {
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        LocalContainerEntityManagerFactoryBean manager = new LocalContainerEntityManagerFactoryBean(); // HibernateExceptions, PersistenceExceptions... to DataAccessException
+        LocalContainerEntityManagerFactoryBean manager = new LocalContainerEntityManagerFactoryBean(); 
         manager.setDataSource(dataSource());
         manager.setPackagesToScan("web");
         manager.setJpaVendorAdapter(vendorAdapter);
