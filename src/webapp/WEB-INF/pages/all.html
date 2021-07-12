@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+</head>
+<body>
+<table border="1" bordercolor="#101299">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Last Name</th>
+        <th>Mail</th>
+    </tr>
+    <th:block th:each="user : ${users}">
+        <tr>
+            <td th:text="${user.getId()}"></td>
+            <td th:text="${user.getFirstName()}"></td>
+            <td th:text="${user.getLastName()}"></td>
+            <td th:text="${user.getEmail()}"></td>
+            <td>
+                <form th:method="GET" th:action="@{/delete/{id}(id=${user.getId()})}">
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+            <td>
+                <a th:href="@{/edit/{id}(id=${user.getId()})}">Edit</a>
+            </td>
+        </tr>
+    </th:block>
+</table>
+
+
+
+
+
+<form method="POST" th:action="@{/create}" th:object="${user1}">
+
+    <input type="hidden" th:field="*{id}" th:value="${user1.getId()}">
+    <label for="name">Name</label>
+    <input th:field="*{firstName}" id="name" type="text"/>
+    <br>
+    <label for name="surname">Surname</label>
+    <input th:field="*{lastName}" id="surname" type="text"/>
+    <br>
+    <label for name="email">Email</label>
+    <input th:field="*{email}" id="email" type="text">
+    <br>
+    <input type="submit" value="Create">
+
+</form>
+
+
+</body>
+</html>
